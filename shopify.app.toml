@@ -1,0 +1,36 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "5999cf78dcc69cd6695801aee64b8ff4"
+name = "centire-checkout-customize"
+handle = "centire-checkout-customize"
+application_url = "https://abe0-106-219-158-171.ngrok-free.app"
+embedded = true
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = false
+
+[webhooks]
+api_version = "2025-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_cart_transforms, write_products, read_products, read_customers, write_customers, read_files, write_files, write_metaobject_definitions,  customer_read_customers, customer_read_orders ,customer_write_customers, unauthenticated_read_customers,write_metaobject_definitions,write_metaobjects,write_products,write_themes"
+
+[auth]
+redirect_urls = [
+  "https://abe0-106-219-158-171.ngrok-free.app/auth/callback",
+  "https://abe0-106-219-158-171.ngrok-free.app/auth/shopify/callback",
+  "https://abe0-106-219-158-171.ngrok-free.app/api/auth/callback"
+]
+
+[pos]
+embedded = false
